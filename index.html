@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Formulário</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#0f172a,#1e293b,#020617);
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:white;
+padding:40px 30px;
+border-radius:16px;
+box-shadow:0 20px 60px rgba(0,0,0,0.35);
+animation:fadeIn 0.8s ease;
+}
+
+h1{
+text-align:center;
+margin-bottom:25px;
+font-size:24px;
+color:#0f172a;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+label{
+font-size:14px;
+font-weight:600;
+color:#334155;
+}
+
+input{
+padding:12px;
+border-radius:8px;
+border:1px solid #cbd5e1;
+font-size:14px;
+transition:0.2s;
+}
+
+input:focus{
+outline:none;
+border-color:#6366f1;
+box-shadow:0 0 0 3px rgba(99,102,241,0.2);
+}
+
+button{
+margin-top:10px;
+padding:14px;
+border:none;
+border-radius:10px;
+background:#6366f1;
+color:white;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+transition:0.25s;
+}
+
+button:hover{
+background:#4f46e5;
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(79,70,229,0.4);
+}
+
+.success{
+display:none;
+margin-top:15px;
+padding:12px;
+border-radius:8px;
+background:#ecfdf5;
+color:#065f46;
+font-size:14px;
+text-align:center;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media (max-width:480px){
+
+.container{
+padding:30px 20px;
+}
+
+h1{
+font-size:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Formulário</h1>
+
+<form action="https://ais-dev-tzsyvicahuhnjdclc4vg2i-576302395188.europe-west2.run.app/api/submit/510b3cd9-3e11-49b2-96d0-3c57df588a18" method="POST">
+  
+  <label>emnnameo</label>
+  <input name="emnnameo" type="text" required>
+
+  <label>whatsapp</label>
+  <input name="whatsapp" type="number" required>
+
+  <label>email</label>
+  <input name="email" type="email" required>
+
+  <label>anibersario</label>
+  <input name="anibersario" type="text" required>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<div class="success" id="successMsg">
+Data submitted successfully!
+</div>
+
+</div>
+
+<script>
+
+const submitData = async (data) => {
+  const response = await fetch("https://ais-dev-tzsyvicahuhnjdclc4vg2i-576302395188.europe-west2.run.app/api/submit/510b3cd9-3e11-49b2-96d0-3c57df588a18", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+  
+  if (response.ok) {
+    document.getElementById("successMsg").style.display = "block";
+  }
+};
+
+</script>
+
+</body>
+</html>
